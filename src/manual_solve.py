@@ -13,6 +13,59 @@ import itertools as its
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
 
+def solve_1f0c79e5(x):
+    
+    x = x.tolist() 
+    initial_cube = []
+    colour = 0
+    for i in range(len(x)):
+        for j in range(len(x[i])):
+            if x[i][j] != 0:
+                initial_cube.append([x[i][j], i, j]) 
+                if colour == 0 and x[i][j] != 2:
+                    colour = x[i][j]
+    
+    for m in initial_cube:
+        if m[0] == 2:
+            if initial_cube.index(m) == 0:
+                for r, c in zip(range(m[1], -1, -1), range(m[2], -1, -1)):
+                    print(r, c)
+                    x[r][c] = colour
+                    if r > 0:
+                        x[r-1][c] = colour
+                    if c > 0:
+                        x[r][c-1] = colour
+                
+            if initial_cube.index(m) == 1:
+                for r, c in zip(range(m[1], -1, -1), range(m[2], len(x[0])+1)):
+                    print(r, c)
+                    x[r][c] = colour
+                    if r > 0:
+                        x[r-1][c] = colour
+                    if c < len(x[0]) - 1:
+                        x[r][c+1] = colour
+                    
+            if initial_cube.index(m) == 2:
+                for r, c in zip(range(m[1], len(x)), range(m[2], -1, -1)):
+                    print(r, c)
+                    x[r][c] = colour
+                    if r < len(x) - 1:
+                        x[r+1][c] = colour
+                    if c > 0:
+                        x[r][c-1] = colour
+                
+            if initial_cube.index(m) == 3:
+                for r, c in zip(range(m[1], len(x)), range(m[2], len(x[0]))):
+                    print(r, c)
+                    x[r][c] = colour
+                    if r < len(x) - 1:
+                        x[r+1][c] = colour
+                    if c < len(x[0]) - 1:
+                        x[r][c+1] = colour
+    
+    return np.array(x)
+
+
 def solve_3428a4f5(x):
     
     x = x.tolist()    
