@@ -4,19 +4,32 @@ import os, sys
 import json
 import numpy as np
 import re
+import math as mt
+import itertools as its
 
 ### YOUR CODE HERE: write at least three functions which solve
 ### specific tasks by transforming the input x and returning the
 ### result. Name them according to the task ID as in the three
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
-def solve_6a1e5592(x):
-    return x
 
-def solve_b2862040(x):
-    return x
-
-def solve_05269061(x):
+def solve_d037b0a7(x):
+    
+    x = x.tolist()
+    build = []
+    for i in range(len(x)):
+        test = []
+        for j in range(len(x)):
+            if j < i:
+                zeros = []
+                for k in range(len(x[i])):
+                    zeros.append(0)
+                test.append(zeros)
+            else:
+                test.append(x[i])
+        build.append(np.array(test))
+    
+    x = sum(build)
     return x
 
 
