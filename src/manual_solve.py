@@ -13,6 +13,39 @@ import itertools as its
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
 
+def solve_a2fd1cf0(x):
+    
+    x = x.tolist()
+    red_column = 0
+    red_row = 0
+    green_column = 0
+    green_row = 0
+    for i in x:
+        for j in i:
+            if j == 2:
+                red_column = i.index(2)
+                red_row = x.index(i)
+            if j == 3:
+                green_column = i.index(3)
+                green_row = x.index(i)
+    
+    if red_column < green_column:
+        for column_index in range(red_column+1, green_column+1):
+            x[red_row][column_index] = 8
+    else:
+        for column_index in range(green_column+1, red_column+1, ):
+            x[red_row][column_index] = 8
+    
+    if red_row < green_row:
+        for row_index in range(red_row, green_row):
+            x[row_index][green_column] = 8
+    else:
+        for row_index in range(green_row, red_row):
+            x[row_index][green_column] = 8
+    
+    return np.array(x)
+
+
 def solve_d037b0a7(x):
     
     x = x.tolist()
