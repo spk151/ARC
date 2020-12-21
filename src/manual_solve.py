@@ -13,6 +13,33 @@ import itertools as its
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
 
+def solve_3428a4f5(x):
+    
+    x = x.tolist()    
+    list1 = []
+    list2 = []
+    overlay = []
+
+    for row in range(mt.floor(len(x)/2)):
+        list1.append(x[row])
+    for row in range(mt.ceil(len(x)/2), len(x)):
+        list2.append(x[row])
+    
+    for i, j in zip (list1, list2):
+        row = []
+        for n, m in zip(i, j):
+            if n == m:
+                row.append(0)
+            else:
+                row.append(3)
+        overlay.append(row)
+    
+    for i in overlay:
+        print(i)
+    
+    return np.array(overlay)
+
+
 def solve_a2fd1cf0(x):
     
     x = x.tolist()
