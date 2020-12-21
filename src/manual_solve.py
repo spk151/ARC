@@ -13,6 +13,44 @@ import itertools as its
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
 
+def solve_06df4c85(x):
+    
+    x = x.tolist()
+    top_left_coord = []
+    for i in range(len(x) - 1):
+        for j in range(len(x[i]) - 1):
+            if x[i][j] == x[i][j+1] == x[i+1][j] == x[i+1][j+1] and x[i][j] != 0:
+                top_left_coord.append([x[i][j], i, j])
+    
+    compare_align = list(its.combinations(top_left_coord, 2))  
+    
+    for k in compare_align:
+        if k[0][0] == k[1][0]:
+            if k[0][1] == k[1][1]:
+                colour = k[0][0]
+                left_column = k[0][2]
+                right_column = k[1][2]
+                row = k[0][1]
+                for col in range(left_column+3, right_column, 3):
+                    x[row][col] = colour 
+                    x[row][col+1] = colour 
+                    x[row+1][col] = colour
+                    x[row+1][col+1] = colour
+                
+            if k[0][2] == k[1][2]:
+                colour = k[0][0]
+                top_row = k[0][1]
+                bottom_row = k[1][1]
+                col = k[0][2]
+                for row in range(top_row+3, bottom_row, 3):
+                    x[row][col] = colour 
+                    x[row][col+1] = colour 
+                    x[row+1][col] = colour
+                    x[row+1][col+1] = colour
+    
+    return np.array(x)
+
+
 def solve_1f0c79e5(x):
     
     x = x.tolist() 
