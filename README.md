@@ -64,3 +64,6 @@ When your output grid is ready, click the green "Submit!" button to check your a
 After you've obtained the correct answer for the current test input grid, you can switch to the next test input grid for the task using the "Next test input" button (if there is any available; most tasks only have one test input).
 
 When you're done with a task, use the "load task" button to open a new task.
+
+### Answer validation
+The src\manual_solve.py file contains 5 functions; solve_06df4c85, solve_1f0c79e5, solve_3428a4f5, solve_a2fd1cf0 and solve_d037b0a7 that manually solve tasks: 06df4c85, 1f0c79e5, 3428a4f5, a2fd1cf0 and d037b0a7 respectively. 
